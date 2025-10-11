@@ -14,6 +14,7 @@
 		0DC2A35C2E9210C600D468CE /* FoodFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2A35B2E9210C600D468CE /* FoodFeedTests.swift */; };
 		0DC2A3662E9210C600D468CE /* FoodFeedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2A3652E9210C600D468CE /* FoodFeedUITests.swift */; };
 		0DC2A3682E9210C600D468CE /* FoodFeedUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2A3672E9210C600D468CE /* FoodFeedUITestsLaunchTests.swift */; };
+		30AB3F9E2E9AB6C5008066DE /* AddPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AB3F9D2E9AB6BF008066DE /* AddPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		0DC2A3612E9210C600D468CE /* FoodFeedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodFeedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DC2A3652E9210C600D468CE /* FoodFeedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFeedUITests.swift; sourceTree = "<group>"; };
 		0DC2A3672E9210C600D468CE /* FoodFeedUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFeedUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		30AB3F9D2E9AB6BF008066DE /* AddPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		0DC2A3492E9210BF00D468CE /* FoodFeed */ = {
 			isa = PBXGroup;
 			children = (
+				30AB3F9D2E9AB6BF008066DE /* AddPageView.swift */,
 				0DC2A34A2E9210BF00D468CE /* FoodFeedApp.swift */,
 				0DC2A34C2E9210BF00D468CE /* ContentView.swift */,
 				0DC2A34E2E9210C500D468CE /* Assets.xcassets */,
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DC2A34D2E9210BF00D468CE /* ContentView.swift in Sources */,
+				30AB3F9E2E9AB6C5008066DE /* AddPageView.swift in Sources */,
 				0DC2A34B2E9210BF00D468CE /* FoodFeedApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

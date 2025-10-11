@@ -227,13 +227,46 @@ struct NotifsPageView: View {
     }
 }
 
+// RJ is working on this section
 struct AddPageView: View {
+    @State private var name: String = ""
+    @State private var expirationDate: Date = .now
+    @State private var type: String = "Produce"
+    @State private var amount: String = ""
+    
+    private let types: [String] = ["Produce", "Dairy", "Meat", "Pantry", "Frozen", "Other" ]
+    
     var body: some View {
-        VStack {
-            Text("...Add Page")
-                .font(.title)
-            Spacer()
+        Form {
+            Section("Item Details") {
+                TextField("Name", text: $name)
+                DatePicker("Expiration Date", selection: $expirationDate, displayedComponents: .date)
+                Picker("Type", selection: $type ) {
+                    ForEach(types, id: \.self) { t in
+                        Text(t).tag(t)
+                    }
+                }
+                TextField("Amount (e.g., 2 lbs, 3 pcs)", text: $amount)
+            }
+            Section {
+                Button(action: {
+                    // Perform submission logic here
+                }) {
+                    Text("Submit")
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.accentColor)
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                }
+                .listRowInsets(EdgeInsets())
+                .listRowBackground(Color.clear)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            }
         }
+        .navigationTitle("Add Item")
     }
 }
 
