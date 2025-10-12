@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct PressableImageButtonStyle: ButtonStyle {
     var normalImageName: String
@@ -33,6 +34,8 @@ struct AddButtonView: View {
         ))
     }
 }
+
+
 
 struct SortButtonView: View {
     var body: some View {
@@ -62,6 +65,50 @@ struct SearchButtonView: View {
     }
 }
 
+//add button for recipe page
+struct RecipeAddButtonView: View {
+    var action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            EmptyView()
+        }
+        .buttonStyle(PressableImageButtonStyle(
+            normalImageName: "add_temp",
+            pressedImageName: "add_temp"
+        ))
+    }
+}
+
+//sort button for recipe page
+struct RecipeSortButtonView: View {
+    var action: () -> Void
+    var body: some View {
+        Button(action:action){
+            EmptyView()
+        }
+        .buttonStyle(PressableImageButtonStyle(
+            normalImageName: "sort_temp",
+            pressedImageName: "sort_temp_pressed"
+        ))
+    }
+}
+
+//search button for recipe page
+struct RecipeSearchButtonView: View {
+    var action: () -> Void
+    var body: some View {
+        Button(action:action) {
+            EmptyView()
+        }
+        .buttonStyle(PressableImageButtonStyle(
+            normalImageName: "search_temp",
+            pressedImageName: "search_temp"
+        ))
+    }
+}
+
+//bottom bar navigation buttons
 struct InventoryButtonView: View {
     var action: () -> Void
     
@@ -124,7 +171,87 @@ struct ContentView: View {
     
     var body: some View {
             VStack(spacing: 0) {
-                if currentPage != "SocialPage" && currentPage != "NotifsPage" {
+                //making a specific add button for recipes since it has different functions
+                //buttons are reestablished whenever it enters every page becuase add/sort/search have different
+                //functionalities in every navigation tab
+                //recipe functionality
+                if currentPage == "RecipePage"{
+                    HStack(spacing: 100) {
+                        RecipeAddButtonView {
+                            currentPage = "RecipeAddButton"
+                            
+                        }
+                        RecipeSortButtonView {
+                            currentPage = "RecipeSortButton"
+                        }
+                        RecipeSearchButtonView {
+                            currentPage = "RecipeSearchButton"
+                        }
+                    }
+                    .padding()
+                    .background(
+                        shelfBrown.opacity(0.9)
+                            .cornerRadius(12)
+                    )
+                    .padding(.top)
+                }else if currentPage == "RecipeAddButton"{
+                    HStack(spacing: 100) {
+                        RecipeAddButtonView {
+                            currentPage = "RecipeAddButton"
+                            
+                        }
+                        RecipeSortButtonView {
+                            currentPage = "RecipeSortButton"
+                        }
+                        RecipeSearchButtonView {
+                            currentPage = "RecipeSearchButton"
+                        }
+                    }
+                    .padding()
+                    .background(
+                        shelfBrown.opacity(0.9)
+                            .cornerRadius(12)
+                    )
+                    .padding(.top)
+                }else if currentPage == "RecipeSortButton"{
+                    HStack(spacing: 100) {
+                        RecipeAddButtonView {
+                            currentPage = "RecipeAddButton"
+                            
+                        }
+                        RecipeSortButtonView {
+                            currentPage = "RecipeSortButton"
+                        }
+                        RecipeSearchButtonView {
+                            currentPage = "RecipeSearchButton"
+                        }
+                    }
+                    .padding()
+                    .background(
+                        shelfBrown.opacity(0.9)
+                            .cornerRadius(12)
+                    )
+                    .padding(.top)
+                }else if currentPage == "RecipeSearchButton"{
+                    HStack(spacing: 100) {
+                        RecipeAddButtonView {
+                            currentPage = "RecipeAddButton"
+                            
+                        }
+                        RecipeSortButtonView {
+                            currentPage = "RecipeSortButton"
+                        }
+                        RecipeSearchButtonView {
+                            currentPage = "RecipeSearchButton"
+                        }
+                    }
+                    .padding()
+                    .background(
+                        shelfBrown.opacity(0.9)
+                            .cornerRadius(12)
+                    )
+                    .padding(.top)
+                }else if currentPage != "SocialPage" && currentPage != "NotifsPage" {
                     HStack(spacing: 100) {
                         AddButtonView {
                             currentPage = "AddPage"
@@ -149,7 +276,13 @@ struct ContentView: View {
                         AddPageView()
                     } else if currentPage == "RecipePage" {
                         RecipePageView()
-                    } else if currentPage == "SocialPage" {
+                    }else if currentPage == "RecipeAddButton"{
+                        RecipeAddPageView()
+                    }else if currentPage == "RecipeSortButton"{
+                        RecipeSortPageView()
+                    }else if currentPage == "RecipeSearchButton"{
+                        RecipeSearchPageView()
+                    }else if currentPage == "SocialPage" {
                         SocialPageView()
                     } else if currentPage == "NotifsPage" {
                         NotifsPageView()
@@ -172,6 +305,7 @@ struct ContentView: View {
                         currentPage = "NotifsPage"
                     }
                 }
+                
                 .padding()
                 .background(
                     shelfBrown.opacity(0.9)
@@ -180,9 +314,18 @@ struct ContentView: View {
                 .padding(.bottom)
             }
             
-            .navigationDestination(for: String.self) { value in if value == "AddPage" {
+            .navigationDestination(for: String.self) {value in
+                if value == "AddPage" {
                 AddPageView()
-            }
+                }else if value == "RecipeAddButton"{
+                    RecipeAddPageView()
+                }
+                else if value == "RecipeSortButton"{
+                    RecipeSortPageView()
+                }
+                else if value == "RecipeSearchButton"{
+                    RecipeSearchPageView()
+                }
             }
         }
 }
@@ -197,6 +340,8 @@ struct InventoryPageView: View {
     }
 }
 
+//recipe section start
+
 struct RecipePageView: View {
     var body: some View {
         VStack {
@@ -206,6 +351,149 @@ struct RecipePageView: View {
         }
     }
 }
+
+struct RecipeAddPageView: View {
+    @State private var urlOrOwn: Bool = false
+    @State private var link: String = ""
+    @State private var title: String = ""
+    @State private var author: String = ""
+    @State private var cookTime: String = ""
+    @State private var totalTime: String = ""
+    @State private var servingSize = 0
+    @State private var ingredients: String = ""
+    @State private var steps: String = ""
+    @State private var nutrition: String = ""
+    @State private var notes: String = ""
+    @State private var privateOrPublic: Bool = false
+    @State private var selectedItem: PhotosPickerItem?
+    @State private var selectedImage: Image?
+    
+    
+    var body: some View {
+        Form {
+            HStack{
+                Spacer().frame(width: 100)
+                Toggle("", isOn: $urlOrOwn) .labelsHidden()
+                Spacer().frame(width: 40)
+                    if urlOrOwn == false {
+                        Text("URL Input")
+                            .foregroundColor(.blue)
+                    } else {
+                        Text("Recipe Input")
+                            .foregroundColor(.red)
+                    }
+                }
+            if urlOrOwn == false{
+                Section("URL Details"){
+                    
+                    
+                    TextField("Link", text: $link)
+                }
+            }
+            else{
+                Section("Recipe Details") {
+                    //url import or own
+                    TextField("Title", text: $title)
+                    
+                    //picking image
+                    PhotosPicker(selection: $selectedItem, matching: .images) {
+                        Text("Select Image")
+                    }
+                    
+                    //displaying image but it doesnt display rn :/
+                    //TODO make this display
+                    if let selectedImage {
+                        selectedImage
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 200, height: 200)
+                    }
+                    TextField("Author", text: $author)
+                    TextField("Cook Time", text: $cookTime)
+                    TextField("Total Time", text: $totalTime)
+                    
+                    //spinning wheel 1-25. TODO: Should i increase limit?
+                    Picker("Select Serving Size", selection: $servingSize ) {
+                        ForEach(1..<26) { number in Text("\(number)").tag(number)}
+                    }
+                    //TODO make ingredients/steps/notes bullet points?
+                    TextField("Ingredients", text: $ingredients)
+                    TextField("Steps", text: $steps)
+                    TextField("Nutrition", text: $nutrition)
+                    TextField("Notes", text: $notes)
+                }
+            }
+
+            //button and publish side by side
+            HStack(spacing:16) {
+                Button(action: {
+                    // Perform submission logic here
+                }) {
+                    Text("Publish")
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 10)
+                        .background(Color.accentColor)
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                }
+                
+                
+                
+                Spacer().frame(width:70)
+                //hstack inside hstack so i can put toggle switch in the middle and text on right
+                HStack{
+                    Toggle("", isOn: $privateOrPublic) .labelsHidden()
+                    Spacer()
+                        if privateOrPublic == false {
+                            Text("Private")
+                                .foregroundColor(.red)
+                        } else {
+                            Text("Public")
+                                .foregroundColor(.green)
+                        }
+                    }
+                }
+                
+            }
+            
+        }
+    
+    }
+
+
+struct RecipeSortPageView: View {
+    var body: some View {
+        VStack {
+            Text("...Recipe Sort Pop up")
+                .font(.title)
+            Spacer()
+        }
+    }
+}
+
+struct RecipeSearchPageView: View {
+    @State private var searchText = ""
+    var body: some View {
+        NavigationStack {
+            
+            
+            List {
+                ForEach(filteredItems, id: \.self) { item in Text(item)}
+            }
+            .searchable(text: $searchText)
+            
+            
+        }
+    }
+    var filteredItems: [String] {
+        //this is a temporary array to test
+        //TODO sprint 3: return array of recipes
+        return ["Turturkeykey", "Cereal", "Pimento Cheese Sandwich"].filter { $0.localizedStandardContains(searchText) }
+        
+    }
+}
+//recipe section end
 
 struct SocialPageView: View {
     var body: some View {
