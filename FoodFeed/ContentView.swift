@@ -29,8 +29,8 @@ struct AddButtonView: View {
             EmptyView()
         }
         .buttonStyle(PressableImageButtonStyle(
-            normalImageName: "add_temp",
-            pressedImageName: "add_temp"
+            normalImageName: "add_r",
+            pressedImageName: "add_p"
         ))
     }
 }
@@ -45,8 +45,8 @@ struct SortButtonView: View {
             EmptyView()
         }
         .buttonStyle(PressableImageButtonStyle(
-            normalImageName: "sort_temp",
-            pressedImageName: "sort_temp_pressed"
+            normalImageName: "sort",
+            pressedImageName: "sort_p"
         ))
     }
 }
@@ -59,8 +59,8 @@ struct SearchButtonView: View {
             EmptyView()
         }
         .buttonStyle(PressableImageButtonStyle(
-            normalImageName: "search_temp",
-            pressedImageName: "search_temp"
+            normalImageName: "search",
+            pressedImageName: "search_p"
         ))
     }
 }
@@ -74,8 +74,8 @@ struct RecipeAddButtonView: View {
             EmptyView()
         }
         .buttonStyle(PressableImageButtonStyle(
-            normalImageName: "add_temp",
-            pressedImageName: "add_temp"
+            normalImageName: "add_r",
+            pressedImageName: "add_p"
         ))
     }
 }
@@ -88,8 +88,8 @@ struct RecipeSortButtonView: View {
             EmptyView()
         }
         .buttonStyle(PressableImageButtonStyle(
-            normalImageName: "sort_temp",
-            pressedImageName: "sort_temp_pressed"
+            normalImageName: "sort",
+            pressedImageName: "sort_p"
         ))
     }
 }
@@ -102,8 +102,8 @@ struct RecipeSearchButtonView: View {
             EmptyView()
         }
         .buttonStyle(PressableImageButtonStyle(
-            normalImageName: "search_temp",
-            pressedImageName: "search_temp"
+            normalImageName: "search",
+            pressedImageName: "search_p"
         ))
     }
 }
@@ -117,8 +117,8 @@ struct InventoryButtonView: View {
             EmptyView()
         }
         .buttonStyle(PressableImageButtonStyle(
-            normalImageName: "inventory_temp",
-            pressedImageName: "inventory_temp"
+            normalImageName: "inventory",
+            pressedImageName: "inventory_p"
         ))
     }
 }
@@ -167,7 +167,7 @@ struct NotifButtonView: View {
 
 struct ContentView: View {
     @State private var currentPage: String = "InventoryPage"
-    let shelfBrown = Color(red: 196/255, green: 150/255, blue: 69/255)
+    let shelfBrown = Color(red: 64/255, green: 36/255, blue: 23/255)
     
     var body: some View {
             VStack(spacing: 0) {
@@ -313,6 +313,7 @@ struct ContentView: View {
                 )
                 .padding(.bottom)
             }
+            .background(shelfBrown.ignoresSafeArea())
             
             .navigationDestination(for: String.self) {value in
                 if value == "AddPage" {
@@ -331,14 +332,26 @@ struct ContentView: View {
 }
 
 struct InventoryPageView: View {
+    private let repeatCount = 10
+    
     var body: some View {
-        VStack {
-            Text("...Inventory Page")
-                .font(.title)
-            Spacer()
+        ScrollView {
+            ZStack { // repeating background
+                VStack(spacing: 0) {
+                    ForEach(0..<repeatCount, id: \.self) { _ in
+                        Image("shelves")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(height: 375)
+                            .clipped()
+                    }
+                }
+                
+            }
         }
     }
 }
+
 
 //recipe section start
 
