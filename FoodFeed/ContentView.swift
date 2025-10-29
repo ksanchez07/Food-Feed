@@ -552,6 +552,7 @@ struct AddPageView: View {
             Section {
                 Button(action: {
                     // Perform submission logic here
+
                 }) {
                     Text("Submit")
                         .font(.headline)
