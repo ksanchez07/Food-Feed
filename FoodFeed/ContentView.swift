@@ -7,6 +7,10 @@
 
 import SwiftUI
 import PhotosUI
+import FirebaseFirestore
+
+
+
 
 struct PressableImageButtonStyle: ButtonStyle {
     var normalImageName: String
@@ -537,6 +541,8 @@ struct AddPageView: View {
     
     private let types: [String] = ["Produce", "Dairy", "Meat", "Pantry", "Frozen", "Other" ]
     
+    let db = Firestore.firestore()
+    
     var body: some View {
         Form {
             Section("Item Details") {
@@ -552,6 +558,9 @@ struct AddPageView: View {
             Section {
                 Button(action: {
                     // Perform submission logic here
+                    addItemToDatabase()
+                    
+                    
                 }) {
                     Text("Submit")
                         .font(.headline)
@@ -568,6 +577,39 @@ struct AddPageView: View {
             }
         }
         .navigationTitle("Add Item")
+    }
+
+
+    //start of firebase functions
+    
+    //TESTING ADD
+    //to test we need to change read/write permissions on firebase to true
+    //this is bc we need to authenticate user first and currently we dont
+    func addItemToDatabase() {
+        
+        //temp, its just a random number id
+        let userID = "tester"
+        
+        let itemData: [String: Any] = [
+            "itemName": name,
+            "expirationDate": Timestamp(date: expirationDate),
+            "quantity": amount,
+            "type": [type]
+        ]
+        
+        db.collection("users").document(userID).collection("items").addDocument(data: itemData) { error in
+            if let error = error {
+                print("Error adding item")
+            } else {
+                print("Item added")
+                
+                //resetting items to be blank
+                name = ""
+                amount = ""
+                type = "Produce"
+                expirationDate = .now
+            }
+        }
     }
 }
 
