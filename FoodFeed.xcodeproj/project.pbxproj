@@ -15,6 +15,7 @@
 		0DC2A3662E9210C600D468CE /* FoodFeedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2A3652E9210C600D468CE /* FoodFeedUITests.swift */; };
 		0DC2A3682E9210C600D468CE /* FoodFeedUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2A3672E9210C600D468CE /* FoodFeedUITestsLaunchTests.swift */; };
 		30AB3F9E2E9AB6C5008066DE /* AddPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AB3F9D2E9AB6BF008066DE /* AddPageView.swift */; };
+		E05266CB2EB7BDAF00312B64 /* SignUpPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05266CA2EB7BDAF00312B64 /* SignUpPage.swift */; };
 		E053217A2EB1CF0000CC6714 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E05321792EB1CEFF00CC6714 /* GoogleService-Info.plist */; };
 		E080C0E72EB1C8C2003507A8 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E080C0E62EB1C8C2003507A8 /* FirebaseAnalytics */; };
 		E080C0E92EB1C8C2003507A8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E080C0E82EB1C8C2003507A8 /* FirebaseAuth */; };
@@ -25,6 +26,7 @@
 		E080C0F32EB1C8C2003507A8 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = E080C0F22EB1C8C2003507A8 /* FirebaseRemoteConfig */; };
 		E080C0F52EB1C8C2003507A8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E080C0F42EB1C8C2003507A8 /* FirebaseStorage */; };
 		E080C0F72EB1C8C2003507A8 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = E080C0F62EB1C8C2003507A8 /* FirebaseStorageCombine-Community */; };
+		E0E5F9AA2EB2B23E00A473C5 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E5F9A92EB2B23E00A473C5 /* LoginPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,18 +47,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0DC2A3472E9210BF00D468CE /* FoodFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DC2A3472E9210BF00D468CE /* FoodFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = FoodFeed.app; path = "/Users/ksanch/Repos/Food-Feed/build/Debug-iphoneos/FoodFeed.app"; sourceTree = "<absolute>"; };
 		0DC2A34A2E9210BF00D468CE /* FoodFeedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFeedApp.swift; sourceTree = "<group>"; };
 		0DC2A34C2E9210BF00D468CE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0DC2A34E2E9210C500D468CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DC2A3512E9210C500D468CE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		0DC2A3572E9210C600D468CE /* FoodFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DC2A3572E9210C600D468CE /* FoodFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = FoodFeedTests.xctest; path = "/Users/ksanch/Repos/Food-Feed/build/Debug-iphoneos/FoodFeed.app/PlugIns/FoodFeedTests.xctest"; sourceTree = "<absolute>"; };
 		0DC2A35B2E9210C600D468CE /* FoodFeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFeedTests.swift; sourceTree = "<group>"; };
-		0DC2A3612E9210C600D468CE /* FoodFeedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodFeedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DC2A3612E9210C600D468CE /* FoodFeedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = FoodFeedUITests.xctest; path = "/Users/ksanch/Repos/Food-Feed/build/Debug-iphoneos/FoodFeedUITests-Runner.app/PlugIns/FoodFeedUITests.xctest"; sourceTree = "<absolute>"; };
 		0DC2A3652E9210C600D468CE /* FoodFeedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFeedUITests.swift; sourceTree = "<group>"; };
 		0DC2A3672E9210C600D468CE /* FoodFeedUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFeedUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		30AB3F9D2E9AB6BF008066DE /* AddPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageView.swift; sourceTree = "<group>"; };
+		E05266CA2EB7BDAF00312B64 /* SignUpPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPage.swift; sourceTree = "<group>"; };
 		E05321792EB1CEFF00CC6714 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E0E5F9A92EB2B23E00A473C5 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,18 +103,7 @@
 				0DC2A3492E9210BF00D468CE /* FoodFeed */,
 				0DC2A35A2E9210C600D468CE /* FoodFeedTests */,
 				0DC2A3642E9210C600D468CE /* FoodFeedUITests */,
-				0DC2A3482E9210BF00D468CE /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		0DC2A3482E9210BF00D468CE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0DC2A3472E9210BF00D468CE /* FoodFeed.app */,
-				0DC2A3572E9210C600D468CE /* FoodFeedTests.xctest */,
-				0DC2A3612E9210C600D468CE /* FoodFeedUITests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		0DC2A3492E9210BF00D468CE /* FoodFeed */ = {
@@ -120,6 +113,8 @@
 				30AB3F9D2E9AB6BF008066DE /* AddPageView.swift */,
 				0DC2A34A2E9210BF00D468CE /* FoodFeedApp.swift */,
 				0DC2A34C2E9210BF00D468CE /* ContentView.swift */,
+				E0E5F9A92EB2B23E00A473C5 /* LoginPage.swift */,
+				E05266CA2EB7BDAF00312B64 /* SignUpPage.swift */,
 				0DC2A34E2E9210C500D468CE /* Assets.xcassets */,
 				0DC2A3502E9210C500D468CE /* Preview Content */,
 			);
@@ -242,7 +237,7 @@
 			packageReferences = (
 				E080C0E52EB1C8C2003507A8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
-			productRefGroup = 0DC2A3482E9210BF00D468CE /* Products */;
+			productRefGroup = 0DC2A33E2E9210BF00D468CE;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -285,6 +280,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0E5F9AA2EB2B23E00A473C5 /* LoginPage.swift in Sources */,
+				E05266CB2EB7BDAF00312B64 /* SignUpPage.swift in Sources */,
 				0DC2A34D2E9210BF00D468CE /* ContentView.swift in Sources */,
 				30AB3F9E2E9AB6C5008066DE /* AddPageView.swift in Sources */,
 				0DC2A34B2E9210BF00D468CE /* FoodFeedApp.swift in Sources */,
@@ -451,6 +448,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodFeed/Preview Content\"";
+				DEVELOPMENT_TEAM = N2A732UXMB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -479,6 +477,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodFeed/Preview Content\"";
+				DEVELOPMENT_TEAM = N2A732UXMB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

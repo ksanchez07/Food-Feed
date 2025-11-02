@@ -8,7 +8,7 @@
 import SwiftUI
 import PhotosUI
 import FirebaseFirestore
-
+import FirebaseAuth
 
 
 
@@ -171,6 +171,7 @@ struct NotifButtonView: View {
 
 struct ContentView: View {
     @State private var currentPage: String = "InventoryPage"
+
     let shelfBrown = Color(red: 64/255, green: 36/255, blue: 23/255)
     
     var body: some View {
@@ -523,14 +524,59 @@ struct SocialPageView: View {
 }
 
 struct NotifsPageView: View {
+    
+    //TODO, move this next line of code to where the sign out button will be
+    @State private var showLoginPage = false
+    
     var body: some View {
         VStack {
             Text("...Notifications Page")
                 .font(.title)
+            
+            //TODO, move this signout button along with function somewhere else, temporary space right now
+            Button(action:{
+                signOutUser()
+            }){
+                Text("Sign out(temporary location)")
+            }
             Spacer()
         }
+        .fullScreenCover(isPresented: $showLoginPage){
+            LoginPage()
+            
+        }
     }
+    
+    //TODO, this is a temporary spot for signout button until we figure out where we want to put the account profile stuff
+    func signOutUser() {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            print("successfully signed out.")
+           
+            showLoginPage = true
+            
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+    }
+    
+    //this function isn't on the app, use it only if you want to delete a user from the database because i can't delete them from firebase
+    //to use temporarily, on the signout button just call delete user instead of sign outR
+    func deleteUser(){
+        let user = Auth.auth().currentUser
+        user?.delete { error in
+            if let error = error {
+                print("did NOT delete the user")
+            } else {
+                print("user deleted ")
+            }
+        }
+    }
+    
+    
 }
+
 
 
 

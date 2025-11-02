@@ -8,6 +8,7 @@
 import SwiftUI
 import PhotosUI
 import FirebaseFirestore
+import FirebaseAuth //TODO, add this import to any file that adds stuff to teh database so it adds it to the specific user
 
 // RJ is working on this section
 struct AddPageView: View {
@@ -63,19 +64,22 @@ struct AddPageView: View {
     //this is bc we need to authenticate user first and currently we dont
     func addItemToDatabase() {
         
-        //temp, its just a random number id
-        let userID = "tester"
+        guard let userID = Auth.auth().currentUser?.uid else {
+            print("Error: No logged in user.")
+            return
+        }
         
         let itemData: [String: Any] = [
             "itemName": name,
             "expirationDate": Timestamp(date: expirationDate),
             "quantity": amount,
-            "type": [type]
+            "type": [type],
+            "createdAt": Timestamp() //TODO, add timestamp on everything so on the bookshelf you can sort by when it was added
         ]
         
         db.collection("users").document(userID).collection("items").addDocument(data: itemData) { error in
             if let error = error {
-                print("Error adding item")
+                print("Error adding item: \(error.localizedDescription)")
             } else {
                 print("Item added")
                 

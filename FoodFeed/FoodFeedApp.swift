@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseCore
+import FirebaseAuth
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -19,17 +20,40 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 @main
 struct FoodFeedApp: App {
+    @State private var isLoggedIn: Bool? = nil
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
             NavigationView{
-//                ContentView()
-                LoginPage()
+
+                //if logged in, go to home page, else go to signup page
+                if isLoggedIn == nil{
+                   ProgressView("Loading...")
+                }
+                else if isLoggedIn == true{
+                    ContentView()
+                }
+                else{
+                    SignUpPage()
+                }
+            }
+            .onAppear {
+                checkLoginState()
             }
         }
     }
-}
 
+//checks if the user was logged in or not when the app loads
+private func checkLoginState() {
+    if let user = Auth.auth().currentUser {
+        print("The following user was logged in: \(user.email  ?? "unknown")")
+        isLoggedIn = true
+    } else {
+        print("User is not logged in")
+        isLoggedIn = false
+    }
+}
+}
 
 
         
